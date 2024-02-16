@@ -5,7 +5,7 @@ import java.util.Objects;
 public class LoginReq {
 
     private String username;
-    private String pass;
+    private String password;
 
     public String getusername() {
         return username;
@@ -15,31 +15,31 @@ public class LoginReq {
         this.username = username;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof LoginReq loginReq)) return false;
-        return Objects.equals(getusername(), loginReq.getusername()) && Objects.equals(getPass(), loginReq.getPass());
+        return Objects.equals(getusername(), loginReq.getusername()) && Objects.equals(getPassword(), loginReq.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getusername(), getPass());
+        return Objects.hash(getusername(), getPassword());
     }
 
     @Override
     public String toString() {
         return "LoginReq{" +
                 "username='" + username + '\'' +
-                ", pass='" + pass + '\'' +
+                ", pass='" + password + '\'' +
                 '}';
     }
 }

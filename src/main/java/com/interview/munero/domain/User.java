@@ -5,7 +5,7 @@ import java.util.Objects;
 public class User {
 
     private Long id;
-    private String usename;
+    private String username;
     private String pass;
     private String secret;
 
@@ -13,9 +13,15 @@ public class User {
 
     }
 
-    public User(Long id, String usename, String pass, String secret) {
+    public User(Long id, String username, String secret) {
         this.id = id;
-        this.usename = usename;
+        this.username = username;
+        this.secret = secret;
+    }
+
+    public User(Long id, String username, String pass, String secret) {
+        this.id = id;
+        this.username = username;
         this.pass = pass;
         this.secret = secret;
     }
@@ -28,12 +34,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsename() {
-        return usename;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsename(String usename) {
-        this.usename = usename;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPass() {
@@ -56,19 +62,19 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return Objects.equals(getId(), user.getId()) && Objects.equals(getUsename(), user.getUsename()) && Objects.equals(getPass(), user.getPass()) && Objects.equals(getSecret(), user.getSecret());
+        return Objects.equals(getId(), user.getId()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPass(), user.getPass()) && Objects.equals(getSecret(), user.getSecret());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUsename(), getPass(), getSecret());
+        return Objects.hash(getId(), getUsername(), getPass(), getSecret());
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", usename='" + usename + '\'' +
+                ", username='" + username + '\'' +
                 ", pass='" + pass + '\'' +
                 ", secret='" + secret + '\'' +
                 '}';
