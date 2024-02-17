@@ -29,6 +29,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import javax.sql.DataSource;
 
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig{
@@ -42,7 +43,7 @@ public class SecurityConfig{
 //        this.myUserDetailsService = myUserDetailsService;
 //    }
 
-    @Autowired
+  //  @Autowired
 //    public SecurityConfig(UserDetailsService myUserDetailsService, JwtFilter jwtFilter) {
 //        this.myUserDetailsService = myUserDetailsService;
 //        this.jwtFilter = jwtFilter;
@@ -65,7 +66,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 
         httpSecurity.csrf().disable()
-                .authorizeRequests().requestMatchers("/munero/login","/munero/create-user","/h2").permitAll().
+                .authorizeRequests().requestMatchers("/munero/login","/h2-console/**", "/munero/items/**").permitAll().
                 anyRequest().authenticated().and().
                 exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -97,6 +98,7 @@ public class SecurityConfig{
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/munero/login", "/munero/create-user","h2");
+        return (web) -> web.ignoring().requestMatchers("/munero/login","/h2-console/**","/munero/items/**");
     }
 }
+

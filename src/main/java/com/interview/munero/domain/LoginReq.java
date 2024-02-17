@@ -1,11 +1,22 @@
 package com.interview.munero.domain;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Objects;
+
 
 public class LoginReq {
 
     private String username;
     private String password;
+
+    public LoginReq() {
+    }
+
+    public LoginReq(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public String getusername() {
         return username;
