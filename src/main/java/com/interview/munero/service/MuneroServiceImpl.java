@@ -114,17 +114,14 @@ public class MuneroServiceImpl implements MuneroService{
 
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url)
-                .queryParam("current", current)
-                .queryParam("rowCount", rowCount)
-                .queryParam("lang", lang);
-
-
-        if(includePricingDetails != null && includePricingDetails.equals(""))
-            builder.queryParam("includePricingDetails", includePricingDetails);
-
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
         if(searchPhrase != null && searchPhrase.equals(""))
             builder.queryParam("searchPhrase", searchPhrase);
+        builder.queryParam("current", current)
+                .queryParam("rowCount", rowCount)
+                .queryParam("lang", lang);
+        if(includePricingDetails != null && includePricingDetails.equals(""))
+            builder.queryParam("includePricingDetails", includePricingDetails);
 
 
         System.out.println(builder.toUriString());
