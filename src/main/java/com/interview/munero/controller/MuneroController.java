@@ -1,10 +1,7 @@
 package com.interview.munero.controller;
 
 //import com.interview.munero.domain.JwtRes;
-import com.interview.munero.domain.Item;
-import com.interview.munero.domain.LoginReq;
-import com.interview.munero.domain.LoginRes;
-import com.interview.munero.domain.User;
+import com.interview.munero.domain.*;
 import com.interview.munero.service.MuneroService;
 //import com.interview.munero.service.MyUserDetailsService;
 //import com.interview.munero.util.JwtUtil;
@@ -66,6 +63,19 @@ public class MuneroController {
        List<Item> items =muneroService.getAllItems(current,lang,rowCount,includePricingDetails, searchPhrase,jwtToken,methodType);
 
        return new ResponseEntity<>(items, HttpStatus.OK);
+
+    }
+
+
+    @PostMapping("/place-order")
+    public ResponseEntity<?>placeOrder(@RequestBody OrderReq order,
+                                       @RequestHeader("Authorization") String jwtToken,
+                                       HttpServletRequest request ){
+
+        String methodType = request.getMethod();
+        OrderRes res=muneroService.placeOrder(order, jwtToken,methodType);
+
+        return new ResponseEntity<>(res, HttpStatus.OK);
 
     }
 

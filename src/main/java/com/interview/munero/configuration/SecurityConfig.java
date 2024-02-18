@@ -98,7 +98,7 @@ public class SecurityConfig{
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/munero/login","/h2-console/**","/munero/items/**");
+        return (web) -> web.ignoring().requestMatchers("/munero/**","/h2-console/**");
     }
 }
 
