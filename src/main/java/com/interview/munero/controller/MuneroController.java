@@ -79,6 +79,18 @@ public class MuneroController {
 
     }
 
+    @GetMapping("/order-status/{identifier}")
+    public ResponseEntity<?> getOrderStatus(@PathVariable String identifier,@RequestHeader("Authorization") String jwtToken,
+                                            HttpServletRequest request){
+
+
+        String methodType = request.getMethod();
+        OrderStatus orderStatus=muneroService.getOrderService(identifier,jwtToken, methodType);
+
+        return new ResponseEntity<>(orderStatus, HttpStatus.OK);
+
+    }
+
 
 
 }
