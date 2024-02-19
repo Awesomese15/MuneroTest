@@ -217,12 +217,10 @@ public class MuneroServiceImpl implements MuneroService {
 
         HttpEntity<?> requestEntity = new HttpEntity<>(order, headers);
 
-        Object res = new Object();
-        try {
-            res = restTemplate.postForObject(url, requestEntity, Object.class);
-        } catch (Exception e) {
-            throw new RestTemplateExceptions(e);
-        }
+
+
+         Object   res = restTemplate.postForObject(url, requestEntity, Object.class);
+
 
         ObjectMapper objectMapper = new ObjectMapper();
         LinkedHashMap<String, Object> map = objectMapper.convertValue(res, LinkedHashMap.class);
