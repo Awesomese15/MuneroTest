@@ -5,7 +5,7 @@ FROM openjdk:17
 
 EXPOSE 9091
 
-COPY target/munero.jar munero.jar
-#COPY target/*.jar /munero-docker.jar
+COPY target/munero-docker.jar munero-docker.jar
+#COPY target/*.jar munero-docker.jar
 
-ENTRYPOINT ["java", "-jar", "/munero.jar"]
+ENTRYPOINT ["java", "-jar", "/munero-docker.jar"]
